@@ -1,0 +1,18 @@
+.contactsItem {
+    width: 300px;
+    display: flex;
+    gap: 16px;
+    flex-direction: row;
+    justify-content: left;
+  }
+  .button {
+    background-color: rgb(244, 254, 188);
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    padding: 4px;
+  }
+  .button:hover {
+    background-color: yellow;
+  }
+  

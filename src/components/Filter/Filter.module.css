@@ -1,0 +1,9 @@
+.filter {
+    width: 380px;
+  
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
