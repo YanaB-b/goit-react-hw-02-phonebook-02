@@ -15,6 +15,22 @@ import css from './App.module.css';
     filter: '',
   };
 
+  componentDidMount() {
+    const contacts = localStorage.getItem('contacts');
+    const parsedContacts = JSON.parse(contacts);
+
+    if (parsedContacts) {
+      this.setState({ contacts: parsedContacts });
+    }
+  }
+  componentDidUpdate(prevState) {
+    if (prevState.contacts !== this.state.contacts) {
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    }
+  }
+
+
+
   addContacts = newContact => {
     const duplicate = this.state.contacts.find(
       contact => contact.name.toLowerCase() === newContact.name.toLowerCase()
@@ -67,4 +83,3 @@ import css from './App.module.css';
   }
 }
 
-export default App;
