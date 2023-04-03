@@ -1,10 +1,11 @@
+import PropTypes from 'prop-types';
 import { Component } from 'react';
 import ContactForm from '../ContactForm/ContactForm';
 import Filter from '../Filter/Filter';
 import ContactsList from '../ContactsList/ContactsList';
 import css from './App.module.css';
 
- export class App extends Component {
+export class App extends Component {
   state = {
     contacts: [
       { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
@@ -14,22 +15,6 @@ import css from './App.module.css';
     ],
     filter: '',
   };
-
-  componentDidMount() {
-    const contacts = localStorage.getItem('contacts');
-    const parsedContacts = JSON.parse(contacts);
-
-    if (parsedContacts) {
-      this.setState({ contacts: parsedContacts });
-    }
-  }
-  componentDidUpdate(prevState) {
-    if (prevState.contacts !== this.state.contacts) {
-      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
-    }
-  }
-
-
 
   addContacts = newContact => {
     const duplicate = this.state.contacts.find(
@@ -82,4 +67,14 @@ import css from './App.module.css';
     );
   }
 }
+App.propTypes = {
+  contacts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+    })
+  ),
+};
 
+export default App;
